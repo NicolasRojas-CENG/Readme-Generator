@@ -10,11 +10,23 @@ function renderLicenseLink(license) {}
 // If there is no license, return an empty string
 function renderLicenseSection(license) {}
 
-// TODO: Create a function to generate markdown for README
-function generateMarkdown(data) {
-  return `# ${data.title}
+const fs = require('fs');
 
-`;
-}
+// writing files
+const writeFile = fileContent => {
+  return new Promise((resolve, reject) => {
+    fs.writeFile('./dist/README.md', fileContent, err => {
+      if (err) {
+        reject(err);
+        return;
+      }
 
-module.exports = generateMarkdown;
+      resolve({
+        ok: true,
+        message: 'File created!'
+      });
+    });
+  });
+};
+
+module.exports = writeFile;

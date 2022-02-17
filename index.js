@@ -1,27 +1,46 @@
 // TODO: Include packages needed for this application
 const fs = require('fs');
 const inquirer = require('inquirer');
+const generatePage = require('./src/readme_template');
+const writeFile = require('./utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
 const questions = [{
     type: 'input',
+    name: 'github',
+    message: 'What is your GitHub user name?'
+  },{
+    type: 'input',
+    name: 'email',
+    message: 'What is your email?'
+  },{
+    type: 'input',
     name: 'name',
     message: 'What is the name of the project?'
-  },
-  {
+  },{
     type: 'input',
-    name: 'github',
-    message: 'What is the user story?'
-  },
-  {
+    name: 'goal',
+    message: 'What is the goal of the project?'
+  },{
     type: 'input',
-    name: 'about',
-    message: 'Description of the projects: '
-  },
-  {
+    name: 'story',
+    message: 'What is the user story? '
+  },{
+    type: 'editor',
+    name: 'criteria',
+    message: 'What are the criteria for completion? '
+  },{
     type: 'editor',
     name: 'completion',
-    message: 'Description of the steps for completion: '
+    message: 'What were the steps for completion? '
+  },{
+    type: 'input',
+    name: 'preview',
+    message: 'Preview of the site: '
+  },{
+    type: 'input',
+    name: 'deployed',
+    message: 'Link to completed site: '
   },{
     type: 'list',
     name: 'license',
@@ -40,7 +59,16 @@ function writeToFile(fileName, data) {
 
 // TODO: Create a function to initialize app
 function init() {
-    promptInfo().then(answers => console.log(answers));
+    promptInfo()
+    .then(portfolioData => {
+        return generatePage(portfolioData);
+    }).then(pageHTML => {
+        return writeFile(pageHTML);
+    }).then(writeFileResponse => {
+        console.log(writeFileResponse);
+    }).catch(err => {
+        console.log(err);
+    });
 }
 
 function promptInfo(){
