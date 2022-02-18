@@ -11,10 +11,10 @@ module.exports = templateData => {
     console.log(askPreview);
     console.log(askDeployed);
     console.log(askLicense);
-    const {github, email, name} = templateData;
+    const {github, email, project} = templateData;
     console.log(github);
     console.log(email);
-    console.log(name);
+    console.log(project);
     //const {github, email, name, goal, story, criteria, completion, preview, completed, license} = templateData;
   
   //   return `

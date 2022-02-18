@@ -6,23 +6,14 @@ const writeFile = require('./utils/generateMarkdown');
 const prompt = require('prompt-sync')();
 
 // TODO: Create an array of questions for user input
-const metaQuestions = [{
-    type: 'input',
-    name: 'github',
-    message: 'What is your GitHub user name?'
-  },{
-    type: 'input',
-    name: 'email',
-    message: 'What is your email?'
-  }];
+// const metaQuestions = [];
 
-const detailsQuestions = [
-  {
+const detailsQuestions = [{
     type: 'input',
-    name: 'name',
+    name: 'project',
     message: 'Please enter the name of the project?',
-    validate: nameInput => {
-      if (nameInput) {
+    validate: projectInput => {
+      if (projectInput) {
         return true;
       } else {
         console.log('You need to enter the name of the project.');
@@ -101,11 +92,9 @@ const detailsQuestions = [
           return false
         }
       }
-  },
-  ];
+  }];
 
-const extraQuestions = [
-  {
+const extraQuestions = [{
   type: 'confirm',
   name: 'askGoal',
   message: "Do you want to add a 'Goal of the Project' section?",
@@ -128,7 +117,7 @@ const extraQuestions = [
     name: 'askStory',
     message: "Do you want to add a 'User Story' section?",
     default: true
-  },{
+},{
     type: 'input',
     name: 'story',
     message: 'What is the user story?',
@@ -141,12 +130,12 @@ const extraQuestions = [
         return false
       }
     }
-  },{
+},{
     type: 'confirm',
     name: 'askContribution',
     message: "Do you want to add a 'Contribution Guidelines' section?",
     default: true
-  },{
+},{
     type: 'input',
     name: 'contribution',
     message: 'Please enter the guidelines for contribution.',
@@ -159,12 +148,12 @@ const extraQuestions = [
         return false
       }
     }
-  },{
+},{
     type: 'confirm',
     name: 'askTests',
     message: "Do you want to add a 'Test' section?",
     default: true
-  },{
+},{
     type: 'input',
     name: 'tests',
     message: 'Please enter the test instructions.',
@@ -177,12 +166,12 @@ const extraQuestions = [
         return false
       }
     }
-  },{
+},{
     type: 'confirm',
     name: 'askCriteria',
     message: "Do you want to add a 'Criteria for Completion' section?",
     default: true
-  },{
+},{
     type: 'editor',
     name: 'criteria',
     message: 'What are the criteria for completion? ',
@@ -194,12 +183,12 @@ const extraQuestions = [
         console.log('You need to enter the criteria for completion of the project.');
       }
     }
-  },{
+},{
     type: 'confirm',
     name: 'askPreview',
     message: "Do you want to add a 'Preview of the site/app' section?",
     default: true
-  },{
+},{
     type: 'input',
     name: 'preview',
     message: 'Preview of the site: ',
@@ -212,12 +201,12 @@ const extraQuestions = [
         return false
       }
     }
-  },{
+},{
     type: 'confirm',
     name: 'askDeployed',
     message: "Do you want to add a 'Link to Site' section?",
     default: true
-  },{
+},{
     type: 'input',
     name: 'deployed',
     message: 'Link to completed site: ',
@@ -230,12 +219,12 @@ const extraQuestions = [
         return false
       }
     }
-  },{
+},{
     type: 'confirm',
     name: 'askLicense',
     message: "Do you want to add a license to your project?",
     default: true
-  },{
+},{
     type: 'list',
     name: 'license',
     message: 'What tipe of license does your project operate under? ',
@@ -243,13 +232,36 @@ const extraQuestions = [
     when: ({ askLicense }) => askLicense,
     default: 0,
     loop: false
-  }];
+},{
+  type: 'input',
+  name: 'github',
+  message: 'What is your GitHub username?',
+  validate: githubInput => {
+    if (githubInput) {
+      return true;
+    } else {
+      console.log('You need to enter your GitHub username.');
+      return false;
+    }
+  }
+},{
+  type: 'input',
+  name: 'email',
+  message: 'What is your email?',
+  validate: emailInput => {
+    if (emailInput) {
+      return true;
+    } else {
+      console.log('You need to enter your email.');
+      return false;
+    }
+  }
+}];
 
 // TODO: Create a function to initialize app
 function init() {
   instructionsPrompt();
-  userInfoPrompt()
-  .then(projectInfoPrompt)
+  projectInfoPrompt()
   .then(readmeInfoPrompt)
   .then(readmeData => {
     return generatePage(readmeData);
