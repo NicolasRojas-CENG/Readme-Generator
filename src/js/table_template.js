@@ -1,3 +1,4 @@
+//Function used to create the table of contents, based on the sections selected by the user.
 const generateTable = rest => {
     const {askDescription, askInstallation, askUsage, askCompletion, askGoal, askStory, askContribution, askTests, askCriteria, askPreview, askDeployed, askLicense } = rest;
     let ask = [askGoal, askStory, askDescription, askInstallation, askLicense, askUsage, askCriteria, askCompletion, askTests, askPreview, askDeployed, askContribution];
@@ -50,4 +51,5 @@ const generateTable = rest => {
     return helper;
 }
 
+//Exporting the function to be used elsewhere.
 module.exports = {generateTable};

@@ -1,11 +1,10 @@
-// TODO: Include packages needed for this application
+//Importing different functions from other files/modules.
 const inquirer = require('inquirer');
-const generatePage = require('./src/readme_template');
+const generatePage = require('./src/js/readme_template');
 const writeFile = require('./utils/generateMarkdown');
-
 const prompt = require('prompt-sync')();
 
-// TODO: Create an array of questions for user input
+//The array of the questions to be asked to the user.
 const extraQuestions = [{
   name: 'project',
   message: 'Once you have read the instructions, press (Enter) to start building.\n'
@@ -258,7 +257,7 @@ const extraQuestions = [{
   }
 }];
 
-// TODO: Create a function to initialize app
+//Function used as a main.
 function init() {
   instructionsPrompt();
   readmeInfoPrompt()
@@ -274,11 +273,13 @@ function init() {
     ;
 }
 
+//Function used to start the actuall app or not.
 function starInputPrompt() {
   const answer = prompt('Are you ready to start building your README? (Enter) to start, (q) to exit. ');
   (answer ? javascriptAbort() : init())
 }
 
+//Function used to display the instructions of use for the app.
 const instructionsPrompt = () => {
   console.log("Please fill out the following form to build up your README.");
   console.log("For prompts that require a yes/no, a black answer defaults to yes.")
@@ -287,11 +288,13 @@ const instructionsPrompt = () => {
   console.log("For the preview section, feel free to add markdown for an image or video. \nJust remember to type it as markdown.")
 }
 
+//Function used to start the prompts.
 function readmeInfoPrompt(){
   console.log("");
   return inquirer.prompt(extraQuestions);
 }
 
+//Function used to end the app if the user chose to.
 function javascriptAbort(){
   console.log("");
   console.log("------------------------------------------------");
@@ -301,5 +304,5 @@ function javascriptAbort(){
   //process.exit();
 }
 
-// Function call to initialize app
+// Function used to ask the user to start the app.
 starInputPrompt();

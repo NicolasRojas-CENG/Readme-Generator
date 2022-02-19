@@ -1,3 +1,4 @@
+//Function used to generate the license badge, based on the selection made by the user.
 const generateBadge = license => {
     switch (license) {
         case "Apache License 2.0":
@@ -15,6 +16,7 @@ const generateBadge = license => {
     }
 }
 
+//Function used to populate the licence section, based on the selection made by the user and if they chose to have this section.
 const generateLicenseText = license => {
     switch (license) {
         case "Apache License 2.0":
@@ -32,4 +34,5 @@ const generateLicenseText = license => {
             break;
     }
 }
+//Exporting the functions to be used elsewhere.
 module.exports = {generateBadge, generateLicenseText};

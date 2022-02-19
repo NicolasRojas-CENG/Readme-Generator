@@ -1,4 +1,7 @@
+//Importing a function from another file.
 const {generateLicenseText} = require('./license_template');
+
+//Function used to build the table of contents of the README.
 const generateBody = templateData => {
     const {github, email, project, description, installation, usage, completion, goal, story, contribution, tests, criteria, preview, deployed, license, ...rest} = templateData;
     const {askDescription, askInstallation, askUsage, askCompletion, askGoal, askStory, askContribution, askTests, askCriteria, askPreview, askDeployed, askLicense } = rest;
@@ -62,4 +65,6 @@ const generateBody = templateData => {
     });
     return helper;
 }
+
+//Export the function for use in another file.
 module.exports = {generateBody};
