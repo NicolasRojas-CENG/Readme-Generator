@@ -23,7 +23,7 @@ const writeFile = fileContent => {
 
       resolve({
         ok: true,
-        message: 'File created!'
+        message: 'Your README.md has been created.'
       });
     });
   });

@@ -8,17 +8,53 @@ const prompt = require('prompt-sync')();
 // TODO: Create an array of questions for user input
 const extraQuestions = [{
   name: 'project',
-  message: 'Lets start with the project details. (Enter)\n'
+  message: 'Once you have read the instructions, press (Enter) to start building.\n'
 },{
   type: 'input',
   name: 'project',
-  message: 'What is your project name?\n',
+  message: 'What is your project name?',
   validate: testInput => {
     if (testInput) {
       return true;
     } else {
       console.log('You need to enter the name of the project.\n');
       return false;
+    }
+  }
+},{
+  type: 'confirm',
+  name: 'askGoal',
+  message: "Do you want to add a 'Goal of the Project' section\n?",
+  default: true
+},{
+  type: 'input',
+  name: 'goal',
+  message: 'Please enter the goal of the project?',
+  when: ({ askGoal }) => askGoal,
+  validate: goalInput => {
+    if (goalInput) {
+      return true;
+    } else {
+      console.log('You need to enter the goal of the project.');
+      return false;
+    }
+  }
+},{
+  type: 'confirm',
+  name: 'askStory',
+  message: "Do you want to add a 'User Story' section\n?",
+  default: true
+},{
+  type: 'input',
+  name: 'story',
+  message: 'What is the user story?',
+  when: ({ askStory }) => askStory,
+  validate: storyInput => {
+    if (storyInput){
+      return true
+    } else {
+      console.log('You need to enter the story of the project.');
+      return false
     }
   }
 },{
@@ -59,6 +95,19 @@ const extraQuestions = [{
   }
 },{
   type: 'confirm',
+  name: 'askLicense',
+  message: "Do you want to add a license to your project\n?",
+  default: true
+},{
+  type: 'list',
+  name: 'license',
+  message: 'What tipe of license does your project operate under\n? ',
+  choices: ['None', 'Apache License 2.0', 'GNU GPLv3', 'MIT', 'ISC', 'GNU AGPLv3', 'GNU LGPLv3', 'Boost Software License 1.0', 'Mozilla Public License 2.0', 'The Unlicense'],
+  when: ({ askLicense }) => askLicense,
+  default: 0,
+  loop: false
+},{
+  type: 'confirm',
   name: 'askUsage',
   message: "Do you want to add a 'Usage instructions' section?\n",
   default: true
@@ -73,6 +122,24 @@ const extraQuestions = [{
     } else {
       console.log('You need to enter the instructions to use your application.');
       return false
+    }
+  }
+},{
+  type: 'confirm',
+  name: 'askCriteria',
+  message: "Do you want to add a 'Criteria for Completion' section\n?",
+  default: true
+},{
+  type: 'editor',
+  name: 'criteria',
+  message: 'What are the criteria for completion? ',
+  when: ({ askCriteria }) => askCriteria,
+  validate: criteriaInput => {
+    if (criteriaInput){
+      return true;
+    } else {
+      console.log('You need to enter the criteria for completion of the project.');
+      return false;
     }
   }
 },{
@@ -94,60 +161,6 @@ const extraQuestions = [{
     }
   }
 },{
-  type: 'confirm',
-  name: 'askGoal',
-  message: "Do you want to add a 'Goal of the Project' section\n?",
-  default: true
-},{
-  type: 'input',
-  name: 'goal',
-  message: 'Please enter the goal of the project?',
-  when: ({ askGoal }) => askGoal,
-  validate: goalInput => {
-    if (goalInput) {
-      return true;
-    } else {
-      console.log('You need to enter the goal of the project.');
-      return false;
-    }
-  }
-},{
-    type: 'confirm',
-    name: 'askStory',
-    message: "Do you want to add a 'User Story' section\n?",
-    default: true
-},{
-    type: 'input',
-    name: 'story',
-    message: 'What is the user story?',
-    when: ({ askStory }) => askStory,
-    validate: storyInput => {
-      if (storyInput){
-        return true
-      } else {
-        console.log('You need to enter the story of the project.');
-        return false
-      }
-    }
-},{
-    type: 'confirm',
-    name: 'askContribution',
-    message: "Do you want to add a 'Contribution Guidelines' section\n?",
-    default: true
-},{
-    type: 'input',
-    name: 'contribution',
-    message: 'Please enter the guidelines for contribution.',
-    when: ({ askContribution }) => askContribution,
-    validate: contributionInput => {
-      if (contributionInput){
-        return true
-      } else {
-        console.log('You need to enter the guidelines for contribution.');
-        return false
-      }
-    }
-},{
     type: 'confirm',
     name: 'askTests',
     message: "Do you want to add a 'Test' section\n?",
@@ -163,24 +176,6 @@ const extraQuestions = [{
       } else {
         console.log('You need to enter the test instructions.');
         return false
-      }
-    }
-},{
-    type: 'confirm',
-    name: 'askCriteria',
-    message: "Do you want to add a 'Criteria for Completion' section\n?",
-    default: true
-},{
-    type: 'editor',
-    name: 'criteria',
-    message: 'What are the criteria for completion? ',
-    when: ({ askCriteria }) => askCriteria,
-    validate: criteriaInput => {
-      if (criteriaInput){
-        return true;
-      } else {
-        console.log('You need to enter the criteria for completion of the project.');
-        return false;
       }
     }
 },{
@@ -220,22 +215,27 @@ const extraQuestions = [{
       }
     }
 },{
-    type: 'confirm',
-    name: 'askLicense',
-    message: "Do you want to add a license to your project\n?",
-    default: true
+  type: 'confirm',
+  name: 'askContribution',
+  message: "Do you want to add a 'Contribution Guidelines' section\n?",
+  default: true
 },{
-    type: 'list',
-    name: 'license',
-    message: 'What tipe of license does your project operate under\n? ',
-    choices: ['None', 'Apache License 2.0', 'GNU GPLv3', 'MIT', 'ISC', 'GNU AGPLv3', 'GNU LGPLv3', 'Boost Software License 1.0', 'Mozilla Public License 2.0', 'The Unlicense'],
-    when: ({ askLicense }) => askLicense,
-    default: 0,
-    loop: false
+  type: 'input',
+  name: 'contribution',
+  message: 'Please enter the guidelines for contribution.',
+  when: ({ askContribution }) => askContribution,
+  validate: contributionInput => {
+    if (contributionInput){
+      return true
+    } else {
+      console.log('You need to enter the guidelines for contribution.');
+      return false
+    }
+  }
 },{
   type: 'input',
   name: 'github',
-  message: 'What is your GitHub username\n?',
+  message: 'What is your GitHub username?',
   validate: githubInput => {
     if (githubInput) {
       return true;
@@ -247,7 +247,7 @@ const extraQuestions = [{
 },{
   type: 'input',
   name: 'email',
-  message: 'What is your email?\n',
+  message: 'What is your email?',
   validate: emailInput => {
     if (emailInput) {
       return true;
@@ -264,13 +264,13 @@ function init() {
   readmeInfoPrompt()
   .then(readmeData => {
     return generatePage(readmeData);
-  })//.then(readme => {
-    //     return writeFile(readme);
-    // }).then(writeFileResponse => {
-    //     console.log(writeFileResponse);
-    // }).catch(err => {
-    //     console.log(err);
-    // })
+  }).then(readme => {
+         return writeFile(readme);
+     }).then(writeFileResponse => {
+         console.log(writeFileResponse);
+     }).catch(err => {
+         console.log(err);
+     })
     ;
 }
 
@@ -281,8 +281,10 @@ function starInputPrompt() {
 
 const instructionsPrompt = () => {
   console.log("Please fill out the following form to build up your README.");
+  console.log("For prompts that require a yes/no, a black answer defaults to yes.")
   console.log("You are required to fill each section you wish to add to your README.");
   console.log("For prompts that open a temp file, please write in markdown format.\n Otherwise, the input will not display as it should in the README.md");
+  console.log("For the preview section, feel free to add markdown for an image or video. \nJust remember to type it as markdown.")
 }
 
 function readmeInfoPrompt(){

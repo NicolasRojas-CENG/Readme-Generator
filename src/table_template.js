@@ -1,5 +1,4 @@
-const generateTable = templateData => {
-    const {github, email, project, description, installation, usage, completion, goal, story, contribution, tests, criteria, preview, deployed, license, ...rest} = templateData;
+const generateTable = rest => {
     const {askDescription, askInstallation, askUsage, askCompletion, askGoal, askStory, askContribution, askTests, askCriteria, askPreview, askDeployed, askLicense } = rest;
     let ask = [askGoal, askStory, askDescription, askInstallation, askLicense, askUsage, askCriteria, askCompletion, askTests, askPreview, askDeployed, askContribution];
     console.log(ask);
