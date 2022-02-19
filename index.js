@@ -35,7 +35,7 @@ const extraQuestions = [{
     if (goalInput) {
       return true;
     } else {
-      console.log('You need to enter the goal of the project.');
+      console.log('You need to enter the goal of the project.\n');
       return false;
     }
   }
@@ -53,7 +53,7 @@ const extraQuestions = [{
     if (storyInput){
       return true
     } else {
-      console.log('You need to enter the story of the project.');
+      console.log('You need to enter the story of the project.\n');
       return false
     }
   }
@@ -71,7 +71,7 @@ const extraQuestions = [{
     if (descriptionInput){
       return true
     } else {
-      console.log('You need to enter the description of the project.');
+      console.log('You need to enter the description of the project.\n');
       return false
     }
   }
@@ -89,7 +89,7 @@ const extraQuestions = [{
     if (installationInput){
       return true
     } else {
-      console.log('You need to enter the instructiobs for installation.');
+      console.log('You need to enter the instructiobs for installation.\n');
       return false
     }
   }
@@ -102,7 +102,7 @@ const extraQuestions = [{
   type: 'list',
   name: 'license',
   message: 'What tipe of license does your project operate under\n? ',
-  choices: ['None', 'Apache License 2.0', 'GNU GPLv3', 'MIT', 'ISC', 'GNU AGPLv3', 'GNU LGPLv3', 'The Unlicense'],
+  choices: ['None', 'Apache License 2.0', 'GNU GPLv3', 'MIT', 'GNU AGPLv3', 'GNU LGPLv3'],
   when: ({ askLicense }) => askLicense,
   default: 0,
   loop: false
@@ -120,7 +120,7 @@ const extraQuestions = [{
     if (usageInput){
       return true
     } else {
-      console.log('You need to enter the instructions to use your application.');
+      console.log('You need to enter the instructions to use your application.\n');
       return false
     }
   }
@@ -138,7 +138,7 @@ const extraQuestions = [{
     if (criteriaInput){
       return true;
     } else {
-      console.log('You need to enter the criteria for completion of the project.');
+      console.log('You need to enter the criteria for completion of the project.\n');
       return false;
     }
   }
@@ -156,7 +156,7 @@ const extraQuestions = [{
     if (completionInput){
       return true;
     } else {
-      console.log('You need to enter the steps for completion of the project.');
+      console.log('You need to enter the steps for completion of the project.\n');
       return false;
     }
   }
@@ -174,7 +174,7 @@ const extraQuestions = [{
       if (testsInput){
         return true
       } else {
-        console.log('You need to enter the test instructions.');
+        console.log('You need to enter the test instructions.\n');
         return false
       }
     }
@@ -192,7 +192,7 @@ const extraQuestions = [{
       if (completionInput){
         return true
       } else {
-        console.log('You need to enter the link to the preview image of the project.');
+        console.log('You need to enter the link to the preview image of the project.\n');
         return false
       }
     }
@@ -210,7 +210,7 @@ const extraQuestions = [{
       if (completionInput){
         return true
       } else {
-        console.log('You need to enter the link to the deployed site.');
+        console.log('You need to enter the link to the deployed site.\n');
         return false
       }
     }
@@ -228,7 +228,7 @@ const extraQuestions = [{
     if (contributionInput){
       return true
     } else {
-      console.log('You need to enter the guidelines for contribution.');
+      console.log('You need to enter the guidelines for contribution.\n');
       return false
     }
   }
@@ -275,15 +275,15 @@ function init() {
 }
 
 function starInputPrompt() {
-  const answer = prompt('Are you ready to start building your README? Leave blank to exit. ');
-  (answer ? init() : javascriptAbort())
+  const answer = prompt('Are you ready to start building your README? (Enter) to start, (q) to exit. ');
+  (answer ? javascriptAbort() : init())
 }
 
 const instructionsPrompt = () => {
   console.log("Please fill out the following form to build up your README.");
   console.log("For prompts that require a yes/no, a black answer defaults to yes.")
   console.log("You are required to fill each section you wish to add to your README.");
-  console.log("For prompts that open a temp file, please write in markdown format.\n Otherwise, the input will not display as it should in the README.md");
+  console.log("For prompts that open a temp file, please write in markdown format.\nOtherwise, the input will not display as it should in the README.md");
   console.log("For the preview section, feel free to add markdown for an image or video. \nJust remember to type it as markdown.")
 }
 

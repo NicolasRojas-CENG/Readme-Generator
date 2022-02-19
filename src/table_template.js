@@ -1,7 +1,6 @@
 const generateTable = rest => {
     const {askDescription, askInstallation, askUsage, askCompletion, askGoal, askStory, askContribution, askTests, askCriteria, askPreview, askDeployed, askLicense } = rest;
     let ask = [askGoal, askStory, askDescription, askInstallation, askLicense, askUsage, askCriteria, askCompletion, askTests, askPreview, askDeployed, askContribution];
-    console.log(ask);
     let i = 0;
     var helper = "";
     ask.forEach(element => {
@@ -47,6 +46,7 @@ const generateTable = rest => {
       }
       i++;
     });
+    helper = helper + "\n" + "* [Questions](#Questions)"
     return helper;
 }
 

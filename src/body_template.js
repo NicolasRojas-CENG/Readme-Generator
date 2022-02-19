@@ -26,7 +26,7 @@ const generateBody = templateData => {
             break;
           case 4:
             helper = helper + "\n" + '# <a name="License"> Project License </a>';
-            helper = helper + "\n" + generateLicenseText(license, github);
+            helper = helper + "\n" + generateLicenseText(license);
             break;
           case 5:
             helper = helper + "\n" + '# <a name="Usage"> Usage Instructions </a>';

@@ -1,51 +1,34 @@
 const generateBadge = license => {
     switch (license) {
         case "Apache License 2.0":
-            return `![This is an image](./img/ASF_Logo.svg)`;
+            return `<img src="./../src/img/ASF_Logo.png" width="100" height="25">`;
         case "GNU GPLv3":
-            return `![This is an image](./img/GPLv3_Logo.png)`;
+            return `<img src="./../src/img/GPLv3_Logo.png" width="100" height="25">`;
         case "MIT":
-            return `![This is an image](./img/mit.svg)`;  
+            return `<img src="./../src/img/mit.png" width="25" height="25">`;  
         case "GNU AGPLv3":
-            return `![This is an image](./img/AGPLv3_Logo.png)`; 
+            return `<img src="./../src/img/AGPLv3_Logo.png" width="100" height="25">`; 
         case "GNU LGPLv3":
-            return `![This is an image](./img/LGPLv3_Logo.png)`;
-        case "The Unlicense":
-            return `![This is an image](./img/PD-icon-black.png)`; 
+            return `<img src="./../src/img/LGPLv3_Logo.png" width="100" height="25">`;
         default:
             break;
     }
 }
 
-const generateLicenseText = (license, github) => {
+const generateLicenseText = license => {
     switch (license) {
         case "Apache License 2.0":
-            return `Copyright 2022 ${github} 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-                http://www.apache.org/licenses/LICENSE-2.0
-<details><summary>Learn More</summary>
-<p>If you would like to learn more about this license, [click here](https://choosealicense.com/licenses/apache-2.0/).</p>
-</details>`;
+            return `[${license}](https://github.com/moby/moby/blob/master/LICENSE)`;
         case "GNU GPLv3":
-            return `Copyright (C) 2022  ${github}
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-any later version.
-<details><summary>Learn More</summary>
-<p>If you would like to learn more about this license, [click here](https://choosealicense.com/licenses/gpl-3.0/).</p>
-</details>`;
+            return `[${license}](https://github.com/MacPass/KeePassKit/blob/master/Licenses/GPLv3.license.txt)`;
         case "MIT":
-            return `![This is an image](https://myoctocat.com/assets/images/base-octocat.svg)`;  
+            return `[${license}](https://github.com/git/git-scm.com/blob/main/MIT-LICENSE.txt)`;  
         case "GNU AGPLv3":
-            return `![This is an image](https://myoctocat.com/assets/images/base-octocat.svg)`; 
+            return `[${license}](https://github.com/IQAndreas/markdown-licenses/blob/master/gnu-agpl-v3.0.md)`; 
         case "GNU LGPLv3":
-            return `![This is an image](https://myoctocat.com/assets/images/base-octocat.svg)`;
-        case "The Unlicense":
-            return `![This is an image](https://myoctocat.com/assets/images/base-octocat.svg)`; 
+            return `[${license}](https://github.com/IQAndreas/markdown-licenses/blob/master/gnu-lgpl-v3.0.md)`; 
         default:
+            return `This project does not have a license.`;
             break;
     }
 }

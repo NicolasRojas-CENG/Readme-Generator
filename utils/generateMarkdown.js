@@ -8,10 +8,9 @@ const writeFile = fileContent => {
         return;
       }
 
-      resolve({
-        ok: true,
-        message: 'Your README.md has been created.'
-      });
+      resolve(
+      'Your README.md has been created.'
+      );
     });
   });
 };
