@@ -12,6 +12,7 @@ const generateBadge = license => {
         case "GNU LGPLv3":
             return `<img src="./../src/img/LGPLv3_Logo.png" width="100" height="25">`;
         default:
+            return "";
             break;
     }
 }

@@ -1,5 +1,6 @@
 
-# README Generator  undefined
+# README Generator  
+Project 6. Due date: 27th of Febuary 2022.
 ## Table of Contents
   
 * [Goal of the Project](#Goal)
@@ -48,10 +49,13 @@ Read the instructions at the beginning for the best results for your readme. The
 # <a name="Tests"> App Tests </a>
 I have not provided any tests.
 # <a name="Preview"> Site/App Preview </a>
-I will add the video later.
+The video can be found in the project folder under "App Demo".
+The file is too big to add to this readme.
 # <a name="Contribution"> Contribution Guidelines </a>
 This project is not currently open to contributions.
 # <a name="Questions"> Questions </a>
   If you have any questions, feel free to contact me through GitHub at 
   [nicolasrojas-ceng](https://github.com/nicolasrojas-ceng). <br>
   Alternatively, you can contact me at my email: [lucanrojas@gmail.com](mailto:lucanrojas@gmail.com)
+
+  NOTE: This README.md was created with this application.
