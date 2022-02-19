@@ -1,6 +1,6 @@
 
 # README Generator  
-Project 6. Due date: 27th of Febuary 2022.
+Project 7. Due date: 27th of Febuary 2022.
 ## Table of Contents
   
 * [Goal of the Project](#Goal)
