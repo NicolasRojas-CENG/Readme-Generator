@@ -49,8 +49,19 @@ Read the instructions at the beginning for the best results for your readme. The
 # <a name="Tests"> App Tests </a>
 I have not provided any tests.
 # <a name="Preview"> Site/App Preview </a>
-The video can be found in the project folder under "App Demo".
-The file is too big to add to this readme.
+
+
+https://user-images.githubusercontent.com/55503463/154822789-d719e92d-2a44-4222-8df6-e54d58f7d53c.mp4
+
+
+
+https://user-images.githubusercontent.com/55503463/154822790-0f88f330-4dd2-40bf-94da-f5a940682b35.mp4
+
+
+
+https://user-images.githubusercontent.com/55503463/154822793-a383e154-6ff9-4750-a7d2-0eb86cac4c75.mp4
+
+
 # <a name="Contribution"> Contribution Guidelines </a>
 This project is not currently open to contributions.
 # <a name="Questions"> Questions </a>
