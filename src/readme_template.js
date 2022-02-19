@@ -1,33 +1,63 @@
+const generateTable = require('./table_template');
 // export function to generate entire page
 module.exports = templateData => {
     // destructure page data by section
-    console.log(templateData);
-    const {askGoal, askStory, askContribution, askTests, askCriteria, askPreview, askDeployed, askLicense } = templateData;
-    console.log(askGoal);
-    console.log(askStory);
-    console.log(askContribution);
-    console.log(askTests);
-    console.log(askCriteria);
-    console.log(askPreview);
-    console.log(askDeployed);
-    console.log(askLicense);
-    const {github, email, project} = templateData;
-    console.log(github);
-    console.log(email);
-    console.log(project);
-    //const {github, email, name, goal, story, criteria, completion, preview, completed, license} = templateData;
+    //console.log(templateData);
+    // const {github, email, project, description, installation, usage, completion, goal, story, contribution, tests, criteria, preview, deployed, license, ...rest} = templateData;
+    // const {askDescription, askInstallation, askUsage, askCompletion, askGoal, askStory, askContribution, askTests, askCriteria, askPreview, askDeployed, askLicense } = rest;
+    // let ask = [askGoal, askStory, askDescription, askInstallation, askLicense, askUsage, askCriteria, askCompletion, askTests, askPreview, askDeployed, askContribution];
+    // console.log(ask);
+    // let i = 0;
+    // var helper = [];
+    // ask.forEach(element => {
+    //   if (element) {
+    //     switch (i){
+    //       case 0:
+    //         helper.push("* [Goal of the Project](#Goal)");
+    //         break;
+    //       case 1:
+    //         helper.push("* [Story of the Project](#Story)");
+    //         break;
+    //       case 2:
+    //         helper.push("* [Description of the Project](#Description)");
+    //         break;
+    //       case 3:
+    //         helper.push("* [Install Instructions](#Installation)");
+    //         break;
+    //       case 4:
+    //         helper.push("* [Project License](#License)");
+    //         break;
+    //       case 5:
+    //         helper.push("* [Usage Instructions](#Usage)");
+    //         break;
+    //       case 6:
+    //         helper.push("* [Criteria For Completion](#Criteria)");
+    //         break;
+    //       case 7:
+    //         helper.push("* [Steps For Completion](#Completion)");
+    //         break;
+    //       case 8:
+    //         helper.push("* [App Tests](#Tests)");
+    //         break;
+    //       case 9:
+    //         helper.push("* [Site/App Preview](#Preview)");
+    //         break;
+    //       case 10:
+    //         helper.push("* [Deployed Site/App](#Deployed)");
+    //         break;
+    //       case 11:
+    //         helper.push("* [Contribution Guidelines](#Contribution)");
+    //         break;
+    //     }
+    //   }
+    //   i++;
+    // });
+     console.log(generateTable(templateData));
   
   //   return `
   // # ${name}
   // ## Table of Contents
-  // * [Goal of the Project](#Goal)
-  // * [User Story](#Story)
-  // * [Criteria For Completion](#Criteria)
-  // * [Completion](#Completion)
-  // * [Preview Of Site](#Preview)
-  // * [Completed Site](#Completed)
-  // * [License](#License)
-  // * [Questions](#Questions)
+  // ${generateTable(templateData)}
     
   // # <a name="Goal"> Goal of the Project </a>
   // ${goal}
