@@ -1,8 +1,8 @@
+const {generateLicenseText} = require('./license_template');
 const generateBody = templateData => {
     const {github, email, project, description, installation, usage, completion, goal, story, contribution, tests, criteria, preview, deployed, license, ...rest} = templateData;
     const {askDescription, askInstallation, askUsage, askCompletion, askGoal, askStory, askContribution, askTests, askCriteria, askPreview, askDeployed, askLicense } = rest;
     let ask = [askGoal, askStory, askDescription, askInstallation, askLicense, askUsage, askCriteria, askCompletion, askTests, askPreview, askDeployed, askContribution];
-    //console.log(ask);
     let i = 0;
     var helper = "";
     ask.forEach(element => {
@@ -26,7 +26,7 @@ const generateBody = templateData => {
             break;
           case 4:
             helper = helper + "\n" + '# <a name="License"> Project License </a>';
-            helper = helper + "\n" + license;
+            helper = helper + "\n" + generateLicenseText(license, github);
             break;
           case 5:
             helper = helper + "\n" + '# <a name="Usage"> Usage Instructions </a>';

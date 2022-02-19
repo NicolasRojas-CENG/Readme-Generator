@@ -102,7 +102,7 @@ const extraQuestions = [{
   type: 'list',
   name: 'license',
   message: 'What tipe of license does your project operate under\n? ',
-  choices: ['None', 'Apache License 2.0', 'GNU GPLv3', 'MIT', 'ISC', 'GNU AGPLv3', 'GNU LGPLv3', 'Boost Software License 1.0', 'Mozilla Public License 2.0', 'The Unlicense'],
+  choices: ['None', 'Apache License 2.0', 'GNU GPLv3', 'MIT', 'ISC', 'GNU AGPLv3', 'GNU LGPLv3', 'The Unlicense'],
   when: ({ askLicense }) => askLicense,
   default: 0,
   loop: false

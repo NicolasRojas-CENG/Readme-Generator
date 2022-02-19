@@ -1,12 +1,11 @@
 const {generateTable} = require('./table_template');
 const {generateBody} = require('./body_template');
+const {generateBadge} = require('./license_template');
 // export function to generate entire page
 module.exports = templateData => {
-  const {github, email, project} = templateData;
-  //console.log("this is fucntion output: " + generateTable(rest));
-  
+  const {github, email, project, license} = templateData;  
     return `
-  # ${project}
+  # ${project}  ${generateBadge(license)}
   ## Table of Contents
   ${generateTable(templateData)}
 
